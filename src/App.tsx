@@ -193,47 +193,38 @@ function App() {
         ) : (
           // Game screen
           <>
-            {/* 3D Hangman Visualization */}
-            <div
-              className="w-full h-[400px] mb-8 bg-gray-800 rounded-lg overflow-hidden"
-              data-oid="d6:2t5h"
-            >
-              <HangmanGame
-                mistakes={mistakes}
-                gameStatus={gameStatus}
-                resetConfetti={shouldResetConfetti}
-                data-oid="snxe-f4"
-              />
-            </div>
+        <div className="w-full max-w-7xl flex flex-col md:flex-row md:gap-8">
+          {/* 3D Hangman Visualization - Left Side */}
+          <div className="w-full md:w-1/2 h-[400px] mb-8 md:mb-0 bg-gray-800 rounded-lg overflow-hidden">
+            <HangmanGame
+              mistakes={mistakes}
+              gameStatus={gameStatus}
+              resetConfetti={shouldResetConfetti}
+              data-oid="snxe-f4"
+            />
+          </div>
 
+          {/* Right Side Content */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
             {/* Game Status */}
-            <div className="text-center mb-8" data-oid="snqq9-6">
-              <div
-                className="text-3xl font-mono tracking-wider mb-4"
-                data-oid=":r70job"
-              >
+            <div className="text-center mb-8">
+              <div className="text-3xl font-mono tracking-wider mb-4">
                 {maskedWord}
               </div>
 
               {gameStatus === "won" && (
-                <div
-                  className="text-green-500 text-2xl font-bold mb-4"
-                  data-oid="rp9s9ee"
-                >
+                <div className="text-green-500 text-2xl font-bold mb-4">
                   You won! 🎉
                 </div>
               )}
 
               {gameStatus === "lost" && (
-                <div
-                  className="text-red-500 text-2xl font-bold mb-4"
-                  data-oid="tf6epib"
-                >
+                <div className="text-red-500 text-2xl font-bold mb-4">
                   You lost! The word was: {word}
                 </div>
               )}
 
-              <div className="text-gray-400" data-oid="zgnn:-3">
+              <div className="text-gray-400">
                 Mistakes: {mistakes} / {MAX_MISTAKES}
               </div>
             </div>
@@ -246,7 +237,9 @@ function App() {
               word={word}
               data-oid="4jm7fvu"
             />
-          </>
+          </div>
+        </div>
+      </>
         )}
       </div>
 
